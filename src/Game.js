@@ -3,7 +3,9 @@ import { useWindowSize, useEvent, getColor } from "./Utils";
 import { calcBlockSize } from "./Constants";
 import cloneDeep from "lodash.clonedeep";
 
-function Game(props) {
+const space = 80;
+
+function Game() {
   const UP_ARROW = 38;
   const DOWN_ARROW = 40;
   const LEFT_ARROW = 37;
@@ -13,7 +15,8 @@ function Game(props) {
   const D = 68;
   const A = 65;
 
-  const { width } = useWindowSize();
+  const { width, height } = useWindowSize();
+  const blockSize = calcBlockSize(width);
   const [gameOver, setGameOver] = useState(false);
   const [data, setData] = useState([
     [0, 0, 0, 0],
@@ -34,9 +37,7 @@ function Game(props) {
     addNumber(newGrid);
     console.table(newGrid);
     setData(newGrid);
-
-    console.log(props.resetMethod);
-    props.resetMethod(resetGame);
+    //setFlatData(flatten(data));
   };
 
   //Add Number Ba- Add an Item
@@ -112,6 +113,7 @@ function Game(props) {
       return newArray;
     } else {
       setData(newArray);
+      //setFlatData(flatten(data));
     }
   };
 
@@ -159,6 +161,7 @@ function Game(props) {
       return newArray;
     } else {
       setData(newArray);
+      //setFlatData(flatten(data));
     }
   };
 
@@ -205,6 +208,7 @@ function Game(props) {
       return b;
     } else {
       setData(b);
+      //setFlatData(flatten(data));
     }
   };
 
@@ -250,6 +254,7 @@ function Game(props) {
       return b;
     } else {
       setData(b);
+      //setFlatData(flatten(data));
     }
   };
 
@@ -265,9 +270,7 @@ function Game(props) {
     }
 
     let checker2 = swipeDown(true);
-    console.log("CHECKER DOWN");
-    console.table(data);
-    console.table(checker2);
+
     if (JSON.stringify(data) !== JSON.stringify(checker2)) {
       return false;
     }
@@ -300,6 +303,7 @@ function Game(props) {
     addNumber(emptyGrid);
     addNumber(emptyGrid);
     setData(emptyGrid);
+    //setFlatData(flatten(data));
   };
 
   //HANDLE KEY DOWN
@@ -334,6 +338,7 @@ function Game(props) {
     }
     let gameOverr = checkIfGameOver();
     if (gameOverr) {
+      alert("gameOver");
       setGameOver(true);
     }
   };
@@ -344,23 +349,69 @@ function Game(props) {
   }, []);
 
   useEvent("keydown", handleKeyDown);
+  // if (props.resetGame) {
+  //   resetGame();
+  //   console.log("resetting");
+  //   props.setResetGame(false);
+  // }
 
   return (
-    <div style={{ marginTop: 100 }}>
+    <div
+      style={{
+        alignSelf: "center",
+        margin: "auto",
+        position: "relative",
+        display: "flex",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
       {data.map((row, one) => {
         return (
-          <div style={{ display: "flex" }} key={one}>
+          <div
+            style={{
+              display: "flex",
+              position: "absolute",
+              top: (one - 2) * space,
+            }}
+            key={one}
+          >
             {row.map((digit, index) => {
-              return <Block num={digit} width={width} key={index} />;
+              return (
+                <Block num={digit} width={width} index={index} key={index} />
+              );
             })}
           </div>
         );
       })}
+      <div
+        style={{
+          top: space * 2 + 30,
+          left: -50,
+          background: "#FF7A90",
+          position: "absolute",
+          fontFamily: "Roboto Mono",
+          fontWeight: 500,
+          borderRadius: 15,
+          width: 100,
+
+          fontSize: 0.03 * height,
+        }}
+      >
+        <div
+          style={{ padding: 5, color: "#2d394d" }}
+          onClick={() => resetGame()}
+        >
+          New Game
+        </div>
+      </div>
     </div>
   );
 }
 
-const Block = ({ num, width }) => {
+const Block = ({ num, width, index }) => {
   const { blockStyle } = style;
   const blockSize = calcBlockSize(width);
   return (
@@ -370,16 +421,19 @@ const Block = ({ num, width }) => {
         color: getColor(num),
         height: blockSize.height,
         width: blockSize.width,
+        left: (index - 2.5) * space,
+        fontSize: 0.5 * blockSize.height,
       }}
     >
-      {num !== 0 ? num : ""}
+      {num !== 0 ? num : "•"}
     </div>
   );
 };
 
 const style = {
   blockStyle: {
-    background: "lightgray",
+    //background: "lightgray",
+    position: "absolute",
     margin: 3,
     display: "flex",
     justifyContent: "center",

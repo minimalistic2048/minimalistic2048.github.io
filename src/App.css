@@ -1,15 +1,16 @@
 .App {
   background-color: #2d394d;
+
   text-align: center;
   justify-content: center;
   align-items: center;
   align-content: center;
-  align-items: center;
   height: 100%;
   position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+}
+.centerButton {
 }

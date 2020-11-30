@@ -33,6 +33,8 @@ export const useEvent = (event, handler, passive = false) => {
 };
 export function getColor(num) {
   switch (num) {
+    case 0:
+      return "#466E83";
     case 2:
       return "#466E83";
     case 4:

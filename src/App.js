@@ -6,17 +6,25 @@ import { useWindowSize } from "./Utils";
 import Game from "./Game";
 
 function App() {
-  //const [resetGame, setReset] = useState();
-  function setResetFunc(resetFunc) {
-    console.log(resetFunc);
-    this.handleClick = resetFunc;
-  }
-
+  //const [resetGame, setReset] = useState(false);
+  const doc = document.querySelector("body");
+  doc.style.backgroundColor = "#2d394d";
   return (
-    <div className="App">
-      <Title handleClick={this.handleClick} />
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+      }}
+    >
+      {/* <Title handleClick={(bool) => setReset(bool)} /> */}
+      <Title />
       <Score />
-      <Game resetMethod={(resetFunc) => setResetFunc(resetFunc)} />
+      {/* <Game resetGame={resetGame} setResetGame={(bool) => setReset(bool)} /> */}
+      <Game />
     </div>
   );
 }
@@ -25,13 +33,10 @@ function App() {
  * Renders title
  * @returns React Component of Title
  */
-function Title(props) {
+function Title() {
   const { width, height } = useWindowSize();
   const titleOffsets = calcTitleOffest(width, height);
-  function handleTheClick() {
-    console.log("clicked");
-    props.handleClick();
-  }
+
   return (
     <div
       style={{
@@ -51,7 +56,7 @@ function Title(props) {
       >
         2408
       </h1>
-      <button onClick={() => handleTheClick()}>New Game</button>
+      {/* <button onClick={props.handleClick(true)}>New Game</button> */}
     </div>
   );
 }
