@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/minimalistic2048.github.io/static/css/main.24355215.chunk.css",
+    "main.js": "/minimalistic2048.github.io/static/js/main.811f6093.chunk.js",
+    "main.js.map": "/minimalistic2048.github.io/static/js/main.811f6093.chunk.js.map",
+    "runtime-main.js": "/minimalistic2048.github.io/static/js/runtime-main.7ee7093a.js",
+    "runtime-main.js.map": "/minimalistic2048.github.io/static/js/runtime-main.7ee7093a.js.map",
+    "static/js/2.a96cb77a.chunk.js": "/minimalistic2048.github.io/static/js/2.a96cb77a.chunk.js",
+    "static/js/2.a96cb77a.chunk.js.map": "/minimalistic2048.github.io/static/js/2.a96cb77a.chunk.js.map",
+    "static/js/3.00f50a06.chunk.js": "/minimalistic2048.github.io/static/js/3.00f50a06.chunk.js",
+    "static/js/3.00f50a06.chunk.js.map": "/minimalistic2048.github.io/static/js/3.00f50a06.chunk.js.map",
+    "index.html": "/minimalistic2048.github.io/index.html",
+    "static/css/main.24355215.chunk.css.map": "/minimalistic2048.github.io/static/css/main.24355215.chunk.css.map",
+    "static/js/2.a96cb77a.chunk.js.LICENSE.txt": "/minimalistic2048.github.io/static/js/2.a96cb77a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ee7093a.js",
+    "static/js/2.a96cb77a.chunk.js",
+    "static/css/main.24355215.chunk.css",
+    "static/js/main.811f6093.chunk.js"
+  ]
+}
